@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            sudo ps -ef | grep java | grep -v grep | awk '{print $2}' | xargs kill -9
+            sudo ps -ef | grep java | grep -v grep | awk '{print $2}' | sudo xargs kill -9
             sudo rm -rf mock-server/
             git clone https://github.com/Dont12/mock-server.git
             cd mock-server/
