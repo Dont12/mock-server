@@ -116,7 +116,7 @@ public class MockContorller {
             + "}";
     }
 
-    @GetMapping
+    @GetMapping("/carts")
     public String 장바구니목록조회() {
         return "{\n"
             + "\t\"status\": \"SUCCESS\"\n"
@@ -213,8 +213,8 @@ public class MockContorller {
             + "}";
     }
 
-    @GetMapping
-    public String 주문내역상세조회() {
+    @GetMapping("/orders/history/{id}")
+    public String 주문내역상세조회(Long id) {
         return "{\n"
             + "\t\"status\": \"SUCCESS\"\n"
             + "\t\"data\": {\n"
