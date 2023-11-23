@@ -27,4 +27,40 @@ public class ProductDetailResponse {
     public void setLatitude(double latitude) { this.latitude = latitude; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     public void setRooms(List<RoomResponse> rooms) { this.rooms = rooms; }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public List<RoomResponse> getRooms() {
+        return rooms;
+    }
 }
