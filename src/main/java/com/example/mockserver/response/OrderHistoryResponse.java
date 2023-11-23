@@ -13,4 +13,16 @@ public class OrderHistoryResponse {
     public void setOrderItem(OrderHistoryItemResponse orderItem) { this.orderItem = orderItem; }
 
     // Getters...
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public OrderHistoryItemResponse getOrderItem() {
+        return orderItem;
+    }
 }
