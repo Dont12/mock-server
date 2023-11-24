@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartResponse {
-    private double totalPrice;
+    private int totalPrice;
+    private PageResponse page;
     private List<CartItemResponse> items;
 
     public CartResponse() {
@@ -12,16 +13,24 @@ public class CartResponse {
     }
 
     // Setters
-    public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
+    public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
     public void setItems(List<CartItemResponse> items) { this.items = items; }
 
     // Getters...
 
-    public double getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
     public List<CartItemResponse> getItems() {
         return items;
+    }
+
+    public PageResponse getPage() {
+        return page;
+    }
+
+    public void setPage(PageResponse page) {
+        this.page = page;
     }
 }

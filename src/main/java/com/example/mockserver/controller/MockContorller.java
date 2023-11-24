@@ -10,6 +10,7 @@ import com.example.mockserver.response.OrderHistoryItemResponse;
 import com.example.mockserver.response.OrderHistoryResponse;
 import com.example.mockserver.response.OrderItemResponse;
 import com.example.mockserver.response.OrderResponse;
+import com.example.mockserver.response.PageResponse;
 import com.example.mockserver.response.PaymentResponse;
 import com.example.mockserver.response.ProductDetailResponse;
 import com.example.mockserver.response.ProductResponse;
@@ -137,6 +138,12 @@ public class MockContorller {
     public ResponseBody<CartResponse> 장바구니목록조회() {
         CartResponse cart = new CartResponse();
         cart.setTotalPrice(100000);
+
+        PageResponse pageResponse = new PageResponse();
+        pageResponse.setMaxPage(1L);
+        pageResponse.setSize(1L);
+        pageResponse.setTotalCount(1L);
+        cart.setPage(pageResponse);
 
         List<CartItemResponse> items = new ArrayList<>();
         CartItemResponse item = new CartItemResponse();
