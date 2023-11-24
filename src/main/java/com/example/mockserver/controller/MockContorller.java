@@ -10,6 +10,7 @@ import com.example.mockserver.response.OrderHistoryItemResponse;
 import com.example.mockserver.response.OrderHistoryResponse;
 import com.example.mockserver.response.OrderItemResponse;
 import com.example.mockserver.response.OrderResponse;
+import com.example.mockserver.response.PaymentResponse;
 import com.example.mockserver.response.ProductDetailResponse;
 import com.example.mockserver.response.ProductResponse;
 import com.example.mockserver.response.ReservationItemResponse;
@@ -293,16 +294,16 @@ public class MockContorller {
 
     @PostMapping("/orders")
     public ResponseBody<ReservationRequestResponse> 예약신청() {
-        Long generatedOrderId = 1L;
-
         ReservationRequestResponse reservationRequestResponse = new ReservationRequestResponse();
-        reservationRequestResponse.setOrderId(generatedOrderId);
+        reservationRequestResponse.setOrderToken("SDGF44SDF123TBDH");
 
         return ResponseBody.ok(reservationRequestResponse);
     }
 
     @PostMapping("/orders/payment")
-    public ResponseBody<Void> 예약결제() {
-        return ResponseBody.ok();
+    public ResponseBody<PaymentResponse> 예약결제() {
+        PaymentResponse paymentResponse = new PaymentResponse();
+        paymentResponse.setOrderId(1L);
+        return ResponseBody.ok(paymentResponse);
     }
 }

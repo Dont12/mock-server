@@ -1,17 +1,18 @@
 package com.example.mockserver.response;
 
 public class ReservationRequestResponse {
-    private Long orderId;
+    private String orderToken;
 
     public ReservationRequestResponse() {}
 
     // Setters
-    public void setOrderId(Long orderId) { this.orderId = orderId; }
+    public void setOrderToken(String orderToken) { this.orderToken = orderToken; }
 
     // Getters...
 
-    public Long getOrderId() {
-        return orderId;
+    public String getOrderToken() {
+        return orderToken;
     }
+
 }
 
