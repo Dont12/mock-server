@@ -29,7 +29,6 @@ public class UserController {
     @PostMapping("/users")
     public ResponseBody<Void> signup(
         @Validated @RequestBody UserRequests.SignupRequestDto signupRequestDto) throws UserRegisterException {
-        userService.isDuplicated(signupRequestDto);
         userService.registerUser(signupRequestDto);
         return ResponseBody.ok();
     }
@@ -45,13 +44,7 @@ public class UserController {
         @AuthenticationPrincipal UserPrincipal userPrincipal) {
         User findUser = userService.readUser(userPrincipal);
         return ResponseBody.ok(
-            UserResponses.UserInfoResponseDto.builder()
-                .id(findUser.getUserId())
-                .email(findUser.getEmail())
-                .nickname(findUser.getNickname())
-                .tel(findUser.getTel())
-                .profileImage(findUser.getProfileImage().getUrl())
-                .build()
+            new UserResponses.UserInfoResponseDto(findUser.getEmail(), findUser.getEmail(), findUser.getTel())
         );
     }
 }
