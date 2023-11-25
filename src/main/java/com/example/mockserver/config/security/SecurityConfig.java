@@ -67,10 +67,10 @@ public class SecurityConfig {
         "/h2-console/**"
     };
     private static final String[] SIGNUP_LOGIN = {
-        "/users", "/auth/login", "/auth/logout"
+        "/auth/login", "/auth/logout"
     };
     private static final String[] MY_PAGE = {
-        "/users", "/products", "/products/{id}"
+        "/products", "/products/{id}"
     };
 
     @Bean
@@ -107,6 +107,9 @@ public class SecurityConfig {
                         Arrays.stream(MY_PAGE)
                             .map(AntPathRequestMatcher::new)
                             .toArray(AntPathRequestMatcher[]::new)
+                    ).permitAll()
+                    .requestMatchers(
+                        new AntPathRequestMatcher("/users", HttpMethod.POST.name())
                     ).permitAll()
                     .anyRequest().authenticated());
 
