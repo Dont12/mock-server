@@ -31,31 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MockContorller {
 
-    @PostMapping("/users")
-    public ResponseBody<Void> 회원가입() {
-        return ResponseBody.ok();
-    }
-
-    @GetMapping("/users")
-    public ResponseBody<UserResponse> 나의정보확인() {
-        UserResponse user = new UserResponse();
-        user.setEmail("a@a.com");
-        user.setNickname("nickname");
-        user.setPhone("010-0000-0000");
-
-        return ResponseBody.ok(user);
-    }
-
-    @PostMapping("/auth/login")
-    public ResponseBody<LoginResponse> 로그인() {
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setGrantType("Bearer");
-        loginResponse.setAccessToken("accessToken");
-        loginResponse.setRefreshToken("refreshToken");
-
-        return ResponseBody.ok(loginResponse);
-    }
-
     @PostMapping("/auth/logout")
     public ResponseBody<Void> 로그아웃() {
         return ResponseBody.ok();
