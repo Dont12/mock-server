@@ -41,22 +41,22 @@ public class MockContorller {
         List<ProductResponse> productList = new ArrayList<>();
 
         // 예시 데이터 추가
-        ProductResponse product1 = new ProductResponse();
-        product1.setId(1L);
-        product1.setName("숙박업소");
-        product1.setImageUrl("이미지URL");
-        product1.setMinPrice(0);
-
-        ProductResponse product2 = new ProductResponse();
-        product2.setId(2L);
-        product2.setName("숙박업소");
-        product2.setImageUrl("이미지URL");
-        product2.setMinPrice(0);
-
-        productList.add(product1);
-        productList.add(product2);
-
+        productList.add(getProductResponse(2804347L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", 170000));
+        productList.add(getProductResponse(2706613L, "송계헌 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", 450000));
+        productList.add(getProductResponse(1972030L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", 70000));
+        productList.add(getProductResponse(1836470L, "베이브리즈가족호텔", "http://tong.visitkorea.or.kr/cms/resource/06/1836506_image2_1.JPG", 120000));
+        productList.add(getProductResponse(2531417L, "전주 한옥숙박체험관[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/90/2531490_image2_1.jpg", 60000));
+        
         return ResponseBody.ok(productList);
+    }
+
+    private static ProductResponse getProductResponse(long id, String name, String imageUrl, Integer minPrice) {
+        ProductResponse product = new ProductResponse();
+        product.setId(id);
+        product.setName(name);
+        product.setImageUrl(imageUrl);
+        product.setMinPrice(minPrice);
+        return product;
     }
 
     @GetMapping("/products/{id}")
