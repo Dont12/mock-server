@@ -26,7 +26,7 @@ public class CookieUtil {
         cookie.setPath("/");
         cookie.setMaxAge(maxAge);
 
-        String cookieHeader = String.format("%s=%s; Path=/; Max-Age=%d; SameSite=None",
+        String cookieHeader = String.format("%s=%s; Path=/; Max-Age=%d; SameSite=None; Secure",
             name, value, maxAge);
         response.addHeader("Set-Cookie", cookieHeader);
     }
