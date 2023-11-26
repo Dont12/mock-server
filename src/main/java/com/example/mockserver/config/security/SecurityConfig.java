@@ -152,7 +152,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.addAllowedOriginPattern("*");
+        corsConfiguration.addAllowedOriginPattern(frontUrlLocal);
 //        corsConfiguration.addAllowedOrigin(frontUrl);
 //        corsConfiguration.addAllowedOrigin(gatewayUrl);
 //        corsConfiguration.addAllowedOrigin(frontUrlLocal);
