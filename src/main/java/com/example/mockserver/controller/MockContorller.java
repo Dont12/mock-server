@@ -311,14 +311,24 @@ public class MockContorller {
     public ResponseBody<OrderDetailResponse> 주문내역상세조회(@PathVariable Long id) {
         OrderDetailResponse orderDetail = new OrderDetailResponse();
         orderDetail.setOrderId(id);
-        orderDetail.setName("예약 이름");
+        orderDetail.setName("김패캠");
         orderDetail.setPhone("010-0000-0000");
-        orderDetail.setUserName("이용자 이름");
+        orderDetail.setUserName("김패캠");
         orderDetail.setUserPhone("010-0000-0000");
 
         List<OrderDetailItemResponse> orderItems = new ArrayList<>();
+
+        orderItems.add(getOrderDetailItemResponse(1L));
+        orderItems.add(getOrderDetailItemResponse(2L));
+        orderItems.add(getOrderDetailItemResponse(3L));
+        orderDetail.setOrderItems(orderItems);
+
+        return ResponseBody.ok(orderDetail);
+    }
+
+    private static OrderDetailItemResponse getOrderDetailItemResponse(Long id) {
         OrderDetailItemResponse orderItem = new OrderDetailItemResponse();
-        orderItem.setOrderItemId(1L);
+        orderItem.setOrderItemId(id);
         orderItem.setProductId(2804347L);
         orderItem.setRoomId(55641L);
         orderItem.setProductName("스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]");
@@ -328,15 +338,9 @@ public class MockContorller {
         orderItem.setMaxGuestCount(4);
         orderItem.setCheckInTime("15:00");
         orderItem.setCheckOutTime("11:00");
-
-        orderItems.add(orderItem);
-        orderItems.add(orderItem);
-        orderItems.add(orderItem);
-        orderDetail.setOrderItems(orderItems);
-
-        return ResponseBody.ok(orderDetail);
+        return orderItem;
     }
-    
+
     @GetMapping("/orders/{id}")
     public ResponseBody<ReservationResponse> 예약신청조회(@PathVariable Long id) {
         ReservationResponse reservationResponse = new ReservationResponse();
