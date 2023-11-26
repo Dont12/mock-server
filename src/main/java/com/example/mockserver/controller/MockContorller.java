@@ -330,6 +330,8 @@ public class MockContorller {
         orderItem.setCheckOutTime("11:00");
 
         orderItems.add(orderItem);
+        orderItems.add(orderItem);
+        orderItems.add(orderItem);
         orderDetail.setOrderItems(orderItems);
 
         return ResponseBody.ok(orderDetail);
