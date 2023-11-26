@@ -120,32 +120,44 @@ public class MockContorller {
         cart.setPage(pageResponse);
 
         List<CartItemResponse> items = new ArrayList<>();
-        CartItemResponse item = new CartItemResponse();
-        item.setId(1L);
-
-        CartProductResponse product = new CartProductResponse();
-        product.setProductId(1L);
-        product.setRoomId(1L);
-        product.setProductName("숙박업소 이름");
-        product.setImageUrl("숙박업소 이미지URL");
-        product.setAddress("숙박업소 주소");
-        product.setRoomName("방 이름");
-        product.setBaseGuestCount(2);
-        product.setMaxGuestCount(4);
-        product.setPrice(100000);
-        product.setCheckInTime("13:00");
-        product.setCheckOutTime("11:00");
-        product.setStock(1);
-
-        item.setProduct(product);
-        item.setCheckInDate("2023-11-25");
-        item.setCheckOutDate("2023-11-27");
-        item.setNumberOfNights(2);
-
-        items.add(item);
+        items.add(getCartItemResponse(1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27"));
+        items.add(getCartItemResponse(2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27"));
+        items.add(getCartItemResponse(3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "대청방", 4, 6, 130000, "14:00", "10:00", "2023-12-25", "2023-12-27"));
+        items.add(getCartItemResponse(4L, 1972030L, 42638L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "사랑방", 4, 5, 100000, "14:00", "10:00", "2023-12-25", "2023-12-27"));
+        items.add(getCartItemResponse(5L, 2804347L, 55641L, "송계헌 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "송계헌", 4, 5, 450000, "16:00", "10:00", "2024-01-25", "2024-01-27"));
+        items.add(getCartItemResponse(6L, 1836470L, 38759L, "베이브리즈가족호텔", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "A", 2, 2, 100000, "15:00", "11:00", "2024-01-25", "2024-01-27"));
         cart.setItems(items);
 
         return ResponseBody.ok(cart);
+    }
+
+    private static CartItemResponse getCartItemResponse(
+        Long itemId, Long productId, Long roomId, String productName, String imageUrl,
+        String address, String roomName, int baseGuestCount, int maxGuestCount,
+        int price, String checkInTime, String checkOutTime, String checkInDate, String checkOutDate
+    ) {
+        CartItemResponse item = new CartItemResponse();
+        item.setId(itemId);
+
+        CartProductResponse product = new CartProductResponse();
+        product.setProductId(productId);
+        product.setRoomId(roomId);
+        product.setProductName(productName);
+        product.setImageUrl(imageUrl);
+        product.setAddress(address);
+        product.setRoomName(roomName);
+        product.setBaseGuestCount(baseGuestCount);
+        product.setMaxGuestCount(maxGuestCount);
+        product.setPrice(price);
+        product.setCheckInTime(checkInTime);
+        product.setCheckOutTime(checkOutTime);
+        product.setStock(2);
+
+        item.setProduct(product);
+        item.setCheckInDate(checkInDate);
+        item.setCheckOutDate(checkOutDate);
+        item.setNumberOfNights(2);
+        return item;
     }
 
     @PostMapping("/carts")
@@ -164,54 +176,123 @@ public class MockContorller {
         orderResponse.setTotalPrice(100000);
 
         List<OrderItemResponse> orderItems = new ArrayList<>();
-        OrderItemResponse orderItem = new OrderItemResponse();
-        orderItem.setProductId(1L);
-        orderItem.setRoomId(1L);
-        orderItem.setProductName("숙박업소 이름");
-        orderItem.setRoomName("방 이름");
-        orderItem.setCheckInDate("2010-01-01");
-        orderItem.setCheckInTime("13:00");
-        orderItem.setCheckOutDate("2010-01-02");
-        orderItem.setCheckOutTime("11:00");
-        orderItem.setBaseGuestCount(2);
-        orderItem.setMaxGuestCount(4);
-        orderItem.setPrice(100000);
-
-        orderItems.add(orderItem);
+        orderItems.add(getOrderItemResponse(
+            2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+            "A/3", "2023-11-25", "15:00", "2023-11-27",
+            "11:00", 4, 4, 170000
+        ));
+        orderItems.add(getOrderItemResponse(
+            2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+            "A/3", "2023-11-25", "15:00", "2023-11-27",
+            "11:00", 4, 4, 170000
+        ));
+        orderItems.add(getOrderItemResponse(
+            1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
+            "대청방", "2023-12-25", "14:00", "2023-12-27",
+            "10:00", 4, 4, 130000
+        ));
+        orderItems.add(getOrderItemResponse(
+            1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
+            "사랑방", "2023-12-25", "14:00", "2023-12-27",
+            "10:00", 4, 5, 100000
+        ));
+        orderItems.add(getOrderItemResponse(
+            2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
+            "송계헌", "2024-01-25", "16:00", "2023-01-27",
+            "11:00", 4, 5, 450000
+        ));
+        orderItems.add(getOrderItemResponse(
+            1836470L, 38759L, "베이브리즈가족호텔",
+            "A", "2024-01-25", "16:00", "2023-01-27",
+            "11:00", 2, 2, 100000
+        ));
         orderResponse.setOrderItems(orderItems);
 
         return ResponseBody.ok(orderResponse);
     }
 
+    private static OrderItemResponse getOrderItemResponse(
+        Long productId, Long roomId, String productName, String roomName,
+        String checkInDate, String checkInTime, String checkOutDate, String checkOutTime,
+        int baseGuestCount, int maxGuestCount, int price
+    ) {
+        OrderItemResponse orderItem = new OrderItemResponse();
+        orderItem.setProductId(productId);
+        orderItem.setRoomId(roomId);
+        orderItem.setProductName(productName);
+        orderItem.setRoomName(roomName);
+        orderItem.setCheckInDate(checkInDate);
+        orderItem.setCheckInTime(checkInTime);
+        orderItem.setCheckOutDate(checkOutDate);
+        orderItem.setCheckOutTime(checkOutTime);
+        orderItem.setBaseGuestCount(baseGuestCount);
+        orderItem.setMaxGuestCount(maxGuestCount);
+        orderItem.setPrice(price);
+        return orderItem;
+    }
 
     @GetMapping("/orders/history")
     public ResponseBody<List<OrderHistoryResponse>> 주문내역조회() {
-        List<OrderHistoryResponse> orderHistories = new ArrayList<>();
+        List<OrderHistoryItemResponse> orderHistories = new ArrayList<>();
 
         OrderHistoryResponse orderHistory = new OrderHistoryResponse();
         orderHistory.setOrderId(1L);
         orderHistory.setCreatedDate("2010-01-01");
 
-        OrderHistoryItemResponse orderItem = new OrderHistoryItemResponse();
-        orderItem.setOrderItemId(1L);
-        orderItem.setProductId(1L);
-        orderItem.setRoomId(1L);
-        orderItem.setProductName("숙박업소 이름");
-        orderItem.setImageUrl("숙박업소 이미지URL");
-        orderItem.setRoomName("방 이름");
-        orderItem.setBaseGuestCount(2);
-        orderItem.setMaxGuestCount(4);
-        orderItem.setCheckInDate("2010-01-01");
-        orderItem.setCheckInTime("13:00");
-        orderItem.setCheckOutDate("2010-01-02");
-        orderItem.setCheckOutTime("11:00");
+        orderHistories.add(getOrderHistoryItemResponse(
+            1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+            "A/3", "2023-11-25", "15:00", "2023-11-27",
+            "11:00", 4, 4
+        ));
+        orderHistories.add(getOrderHistoryItemResponse(
+            2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+            "A/3", "2023-11-25", "15:00", "2023-11-27",
+            "11:00", 4, 4
+        ));
+        orderHistories.add(getOrderHistoryItemResponse(
+            3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
+            "대청방", "2023-12-25", "14:00", "2023-12-27",
+            "10:00", 4, 4
+        ));
+        orderHistories.add(getOrderHistoryItemResponse(
+            4L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
+            "사랑방", "2023-12-25", "14:00", "2023-12-27",
+            "10:00", 4, 5
+        ));
+        orderHistories.add(getOrderHistoryItemResponse(
+            5L, 2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
+            "송계헌", "2024-01-25", "16:00", "2023-01-27",
+            "11:00", 4, 5
+        ));
+        orderHistories.add(getOrderHistoryItemResponse(
+            6L, 1836470L, 38759L, "베이브리즈가족호텔",
+            "A", "2024-01-25", "16:00", "2023-01-27",
+            "11:00", 2, 2
+        ));
+        orderHistory.setOrderItems(orderHistories);
 
-        orderHistory.setOrderItem(orderItem);
-        orderHistories.add(orderHistory);
-
-        return ResponseBody.ok(orderHistories);
+        return ResponseBody.ok(List.of(orderHistory));
     }
 
+    private static OrderHistoryItemResponse getOrderHistoryItemResponse(
+        Long orderItemId, Long productId, Long roomId, String productName, String roomName,
+        String checkInDate, String checkInTime, String checkOutDate, String checkOutTime,
+        int baseGuestCount, int maxGuestCount
+    ) {
+        OrderHistoryItemResponse orderItem = new OrderHistoryItemResponse();
+        orderItem.setOrderItemId(orderItemId);
+        orderItem.setProductId(productId);
+        orderItem.setRoomId(roomId);
+        orderItem.setProductName(productName);
+        orderItem.setRoomName(roomName);
+        orderItem.setCheckInDate(checkInDate);
+        orderItem.setCheckInTime(checkInTime);
+        orderItem.setCheckOutDate(checkOutDate);
+        orderItem.setCheckOutTime(checkOutTime);
+        orderItem.setBaseGuestCount(baseGuestCount);
+        orderItem.setMaxGuestCount(maxGuestCount);
+        return orderItem;
+    }
 
     @GetMapping("/orders/history/{id}")
     public ResponseBody<OrderDetailResponse> 주문내역상세조회(@PathVariable Long id) {
@@ -225,14 +306,14 @@ public class MockContorller {
         List<OrderDetailItemResponse> orderItems = new ArrayList<>();
         OrderDetailItemResponse orderItem = new OrderDetailItemResponse();
         orderItem.setOrderItemId(1L);
-        orderItem.setProductId(1L);
-        orderItem.setRoomId(1L);
-        orderItem.setProductName("숙박업소 이름");
-        orderItem.setImageUrl("숙박업소 이미지URL");
-        orderItem.setRoomName("방 이름");
-        orderItem.setBaseGuestCount(2);
+        orderItem.setProductId(2804347L);
+        orderItem.setRoomId(55641L);
+        orderItem.setProductName("스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]");
+        orderItem.setImageUrl("http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg");
+        orderItem.setRoomName("A/3");
+        orderItem.setBaseGuestCount(4);
         orderItem.setMaxGuestCount(4);
-        orderItem.setCheckInTime("13:00");
+        orderItem.setCheckInTime("15:00");
         orderItem.setCheckOutTime("11:00");
 
         orderItems.add(orderItem);
@@ -251,26 +332,69 @@ public class MockContorller {
         reservationResponse.setPhone("010-0000-0000");
 
         List<ReservationItemResponse> orderItems = new ArrayList<>();
-        ReservationItemResponse reservationItem = new ReservationItemResponse();
-        reservationItem.setOrderItemId(1L);
-        reservationItem.setProductId(1L);
-        reservationItem.setRoomId(1L);
-        reservationItem.setProductName("숙박업소 이름");
-        reservationItem.setImageUrl("숙박업소 이미지URL");
-        reservationItem.setRoomName("방 이름");
-        reservationItem.setBaseGuestCount(2);
-        reservationItem.setMaxGuestCount(4);
-        reservationItem.setGuestCount(4);
-        reservationItem.setPrice(10000);
-        reservationItem.setCheckInTime("13:00");
-        reservationItem.setCheckInDate("2010-01-01");
-        reservationItem.setCheckOutTime("11:00");
-        reservationItem.setCheckOutDate("2010-01-02");
-
-        orderItems.add(reservationItem);
+        orderItems.add(
+            getReservationItemResponse(
+                1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+                "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "A/3", 4, 4,
+                "15:00", "11:00"
+            )
+        );
+        orderItems.add(
+            getReservationItemResponse(
+                2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+                "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "A/3", 4, 4,
+                "15:00", "11:00"
+            )
+        );
+        orderItems.add(
+            getReservationItemResponse(
+                3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
+                "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "대청", 4, 6,
+                "14:00", "10:00"
+            )
+        );
+        orderItems.add(
+            getReservationItemResponse(
+                4L, 1972030L, 42638L, "상유재 [한국관광 품질인증/Korea Quality]",
+                "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "대청", 4, 5,
+                "14:00", "10:00"
+            )
+        );
+        orderItems.add(
+            getReservationItemResponse(
+                5L, 2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
+                "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "송계헌", 4, 5,
+                "16:00", "11:00"
+            )
+        );
+        orderItems.add(
+            getReservationItemResponse(
+                6L, 1836470L, 38759L, "베이브리즈가족호텔",
+                "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "A", 2, 2,
+                "15:00", "11:00"
+            )
+        );
         reservationResponse.setOrderItems(orderItems);
 
         return ResponseBody.ok(reservationResponse);
+    }
+
+    private static ReservationItemResponse getReservationItemResponse(
+        Long orderItemId, Long productId, Long roomId, String productName, String imageUrl, String roomName,
+        int baseGuestCount, int maxGuestCount, String checkInTime, String checkOutTime
+    ) {
+        ReservationItemResponse orderItem = new ReservationItemResponse();
+        orderItem.setOrderItemId(orderItemId);
+        orderItem.setProductId(productId);
+        orderItem.setRoomId(roomId);
+        orderItem.setProductName(productName);
+        orderItem.setImageUrl(imageUrl);
+        orderItem.setRoomName(roomName);
+        orderItem.setBaseGuestCount(baseGuestCount);
+        orderItem.setMaxGuestCount(maxGuestCount);
+        orderItem.setCheckInTime(checkInTime);
+        orderItem.setCheckOutTime(checkOutTime);
+        return orderItem;
     }
 
     @PostMapping("/orders")

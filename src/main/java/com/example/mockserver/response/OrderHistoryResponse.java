@@ -1,16 +1,18 @@
 package com.example.mockserver.response;
 
+import java.util.List;
+
 public class OrderHistoryResponse {
     private Long orderId;
     private String createdDate;
-    private OrderHistoryItemResponse orderItem;
+    private List<OrderHistoryItemResponse> orderItems;
 
     public OrderHistoryResponse() {}
 
     // Setters
     public void setOrderId(Long orderId) { this.orderId = orderId; }
     public void setCreatedDate(String createdDate) { this.createdDate = createdDate; }
-    public void setOrderItem(OrderHistoryItemResponse orderItem) { this.orderItem = orderItem; }
+    public void setOrderItems(List<OrderHistoryItemResponse> orderItems) { this.orderItems = orderItems; }
 
     // Getters...
 
@@ -22,7 +24,7 @@ public class OrderHistoryResponse {
         return createdDate;
     }
 
-    public OrderHistoryItemResponse getOrderItem() {
-        return orderItem;
+    public List<OrderHistoryItemResponse> getOrderItems() {
+        return this.orderItems;
     }
 }
