@@ -25,7 +25,10 @@ public class CookieUtil {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
         cookie.setMaxAge(maxAge);
-        response.addCookie(cookie);
+
+        String cookieHeader = String.format("%s=%s; Path=/; Max-Age=%d; SameSite=None",
+            name, value, maxAge);
+        response.addHeader("Set-Cookie", cookieHeader);
     }
 
     public static void deleteCookie(HttpServletRequest request, HttpServletResponse response,
