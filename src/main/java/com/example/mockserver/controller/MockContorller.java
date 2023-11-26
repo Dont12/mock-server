@@ -271,7 +271,19 @@ public class MockContorller {
         ));
         orderHistory.setOrderItems(orderHistories);
 
-        return ResponseBody.ok(List.of(orderHistory));
+        OrderHistoryResponse orderHistory2 = new OrderHistoryResponse();
+        orderHistory2.setOrderId(2L);
+        orderHistory2.setCreatedDate("2010-01-02");
+
+        List<OrderHistoryItemResponse> orderHistories2 = new ArrayList<>();
+        orderHistories2.add(getOrderHistoryItemResponse(
+            7L, 2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
+            "송계헌", "2024-02-25", "16:00", "2023-02-27",
+            "11:00", 4, 5, "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg"
+        ));
+        orderHistory2.setOrderItems(orderHistories2);
+
+        return ResponseBody.ok(List.of(orderHistory, orderHistory2));
     }
 
     private static OrderHistoryItemResponse getOrderHistoryItemResponse(
