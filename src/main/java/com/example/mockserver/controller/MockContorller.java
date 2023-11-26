@@ -46,7 +46,7 @@ public class MockContorller {
         productList.add(getProductResponse(1972030L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", 70000));
         productList.add(getProductResponse(1836470L, "베이브리즈가족호텔", "http://tong.visitkorea.or.kr/cms/resource/06/1836506_image2_1.JPG", 120000));
         productList.add(getProductResponse(2531417L, "전주 한옥숙박체험관[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/90/2531490_image2_1.jpg", 60000));
-        
+
         return ResponseBody.ok(productList);
     }
 
@@ -62,35 +62,34 @@ public class MockContorller {
     @GetMapping("/products/{id}")
     public ResponseBody<ProductDetailResponse> 숙박업소상세조회(@PathVariable Long id) {
         ProductDetailResponse productDetail = new ProductDetailResponse();
-        productDetail.setId(id);
-        productDetail.setName("숙박업소");
-        productDetail.setZipCode("우편번호");
+        productDetail.setId(2804347L);
+        productDetail.setName("스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]");
+        productDetail.setZipCode("32152");
         productDetail.setAddress("주소");
         productDetail.setDescription("설명");
-        productDetail.setLongitude(123.123);
-        productDetail.setLatitude(123.123);
-        productDetail.setImageUrl("이미지URL");
+        productDetail.setLongitude(126.2741703813);
+        productDetail.setLatitude(36.6766143894);
+        productDetail.setImageUrl("http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg");
 
         List<RoomResponse> rooms = new ArrayList<>();
-        RoomResponse room = getRoomResponse();
-
-        rooms.add(room);
+        rooms.add(getRoomResponse(55641L, "A/3", 4, 4, 170000, "http://tong.visitkorea.or.kr/cms/resource/02/2803402_image2_1.jpg", "15:00", "11:00", "2010-01-01"));
+        rooms.add(getRoomResponse(55642L, "B/5", 4, 6, 200000, "http://tong.visitkorea.or.kr/cms/resource/02/2803402_image2_1.jpg", "15:00", "11:00", "2010-01-01"));
         productDetail.setRooms(rooms);
 
         return ResponseBody.ok(productDetail);
     }
 
-    private static RoomResponse getRoomResponse() {
+    private static RoomResponse getRoomResponse(Long id, String name, int basicGuestCount, int maxGuestCount, int price, String imageUrl, String checkInTime, String checkOutTime, String reserveDate) {
         RoomResponse room = new RoomResponse();
-        room.setId(1L);
-        room.setName("이름");
-        room.setBasicGuestCount(2);
-        room.setMaxGuestCount(4);
-        room.setPrice(100000);
-        room.setCheckInTime("13:00");
-        room.setCheckOutTime("11:00");
-        room.setImageUrl("이미지URL");
-        room.setReserveDate("2010-01-01");
+        room.setId(id);
+        room.setName(name);
+        room.setBasicGuestCount(basicGuestCount);
+        room.setMaxGuestCount(maxGuestCount);
+        room.setPrice(price);
+        room.setCheckInTime(checkInTime);
+        room.setCheckOutTime(checkOutTime);
+        room.setImageUrl(imageUrl);
+        room.setReserveDate(reserveDate);
         room.setStock(2);
         room.setRoomBathFacility("Y");
         room.setRoomBath("Y");

@@ -48,12 +48,12 @@ public class ProductDetailResponse {
         return description;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public String getLongitude() {
+        return String.valueOf(longitude);
     }
 
-    public double getLatitude() {
-        return latitude;
+    public String getLatitude() {
+        return String.valueOf(latitude);
     }
 
     public String getImageUrl() {
