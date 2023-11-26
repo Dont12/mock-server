@@ -242,32 +242,32 @@ public class MockContorller {
         orderHistories.add(getOrderHistoryItemResponse(
             1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
             "A/3", "2023-11-25", "15:00", "2023-11-27",
-            "11:00", 4, 4
+            "11:00", 4, 4, "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg"
         ));
         orderHistories.add(getOrderHistoryItemResponse(
             2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
             "A/3", "2023-11-25", "15:00", "2023-11-27",
-            "11:00", 4, 4
+            "11:00", 4, 4, "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg"
         ));
         orderHistories.add(getOrderHistoryItemResponse(
             3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
             "대청방", "2023-12-25", "14:00", "2023-12-27",
-            "10:00", 4, 4
+            "10:00", 4, 4, "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg"
         ));
         orderHistories.add(getOrderHistoryItemResponse(
             4L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
             "사랑방", "2023-12-25", "14:00", "2023-12-27",
-            "10:00", 4, 5
+            "10:00", 4, 5, "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg"
         ));
         orderHistories.add(getOrderHistoryItemResponse(
             5L, 2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
             "송계헌", "2024-01-25", "16:00", "2023-01-27",
-            "11:00", 4, 5
+            "11:00", 4, 5, "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg"
         ));
         orderHistories.add(getOrderHistoryItemResponse(
             6L, 1836470L, 38759L, "베이브리즈가족호텔",
             "A", "2024-01-25", "16:00", "2023-01-27",
-            "11:00", 2, 2
+            "11:00", 2, 2, "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg"
         ));
         orderHistory.setOrderItems(orderHistories);
 
@@ -277,7 +277,7 @@ public class MockContorller {
     private static OrderHistoryItemResponse getOrderHistoryItemResponse(
         Long orderItemId, Long productId, Long roomId, String productName, String roomName,
         String checkInDate, String checkInTime, String checkOutDate, String checkOutTime,
-        int baseGuestCount, int maxGuestCount
+        int baseGuestCount, int maxGuestCount, String imageUrl
     ) {
         OrderHistoryItemResponse orderItem = new OrderHistoryItemResponse();
         orderItem.setOrderItemId(orderItemId);
@@ -291,6 +291,7 @@ public class MockContorller {
         orderItem.setCheckOutTime(checkOutTime);
         orderItem.setBaseGuestCount(baseGuestCount);
         orderItem.setMaxGuestCount(maxGuestCount);
+        orderItem.setImageUrl(imageUrl);
         return orderItem;
     }
 
