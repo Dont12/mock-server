@@ -109,9 +109,9 @@ public class SecurityConfig {
                             .toArray(AntPathRequestMatcher[]::new)
                     ).permitAll()
                     .requestMatchers(
-                        new AntPathRequestMatcher("/users", HttpMethod.POST.name())
-                    ).permitAll()
-                    .anyRequest().authenticated());
+                        new AntPathRequestMatcher("/users", HttpMethod.GET.name())
+                    ).authenticated()
+                    .anyRequest().permitAll());
 
         http
             .apply(
