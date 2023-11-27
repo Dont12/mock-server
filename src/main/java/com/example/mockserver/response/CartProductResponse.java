@@ -13,6 +13,7 @@ public class CartProductResponse {
     private String checkInTime;
     private String checkOutTime;
     private int stock;
+    private int guestCount;
 
     public CartProductResponse() {
     }
@@ -111,5 +112,13 @@ public class CartProductResponse {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public void setGuestCount(int guestCount) {
+        this.guestCount = guestCount;
+    }
+    
+    public int getGuestCount() {
+        return this.guestCount;
     }
 }
