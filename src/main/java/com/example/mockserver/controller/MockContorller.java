@@ -317,6 +317,9 @@ public class MockContorller {
         orderDetail.setPhone("010-0000-0000");
         orderDetail.setUserName("김패캠");
         orderDetail.setUserPhone("010-0000-0000");
+        orderDetail.setTotalPrice(139000);
+        orderDetail.setReserveDate("2023-11-11");
+        orderDetail.setPayment("CARD");
 
         List<OrderDetailItemResponse> orderItems = new ArrayList<>();
 
