@@ -14,6 +14,8 @@ import com.example.mockserver.response.PageResponse;
 import com.example.mockserver.response.PaymentResponse;
 import com.example.mockserver.response.ProductDetailResponse;
 import com.example.mockserver.response.ProductResponse;
+import com.example.mockserver.response.RegisterOrderItem;
+import com.example.mockserver.response.ReservationDetailResponse;
 import com.example.mockserver.response.ReservationItemResponse;
 import com.example.mockserver.response.ReservationRequestResponse;
 import com.example.mockserver.response.ReservationResponse;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -431,5 +434,28 @@ public class MockContorller {
         PaymentResponse paymentResponse = new PaymentResponse();
         paymentResponse.setOrderId(1L);
         return ResponseBody.ok(paymentResponse);
+    }
+
+    @GetMapping("/orders")
+    public ResponseBody<ReservationDetailResponse> 예약신청조회(
+        @RequestParam String orderToken
+    ) {
+        RegisterOrderItem item = new RegisterOrderItem(
+            2804347L, 55641L,
+            "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
+            "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg",
+            "A/3", 4, 4, 4,
+            99000, "15:00", "2023-11-24", "11:00", "2023-11-25"
+        );
+
+        ReservationDetailResponse response = new ReservationDetailResponse(
+            "af7b554f-b733-47fd-ae65-8fd5454de27f",
+            100000,
+            "김패캠",
+            "010-0000-0000",
+            List.of(item)
+        );
+
+        return ResponseBody.ok(response);
     }
 }
