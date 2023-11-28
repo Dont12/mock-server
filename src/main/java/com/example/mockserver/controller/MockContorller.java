@@ -175,65 +175,12 @@ public class MockContorller {
         return ResponseBody.ok();
     }
 
-    @GetMapping("/carts/order")
-    public ResponseBody<OrderResponse> 장바구니예약신청() {
-        OrderResponse orderResponse = new OrderResponse();
-        orderResponse.setTotalPrice(100000);
+    @PostMapping("/carts/order")
+    public ResponseBody<ReservationRequestResponse> 장바구니예약신청() {
+        ReservationRequestResponse reservationRequestResponse = new ReservationRequestResponse();
+        reservationRequestResponse.setOrderToken("SDGF44SDF123TBDH");
 
-        List<OrderItemResponse> orderItems = new ArrayList<>();
-        orderItems.add(getOrderItemResponse(
-            2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
-            "A/3", "2023-11-25", "15:00", "2023-11-27",
-            "11:00", 4, 4, 170000
-        ));
-        orderItems.add(getOrderItemResponse(
-            2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
-            "A/3", "2023-11-25", "15:00", "2023-11-27",
-            "11:00", 4, 4, 170000
-        ));
-        orderItems.add(getOrderItemResponse(
-            1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
-            "대청방", "2023-12-25", "14:00", "2023-12-27",
-            "10:00", 4, 4, 130000
-        ));
-        orderItems.add(getOrderItemResponse(
-            1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]",
-            "사랑방", "2023-12-25", "14:00", "2023-12-27",
-            "10:00", 4, 5, 100000
-        ));
-        orderItems.add(getOrderItemResponse(
-            2706613L, 42638L, "송계헌 [한국관광 품질인증/Korea Quality]",
-            "송계헌", "2024-01-25", "16:00", "2023-01-27",
-            "11:00", 4, 5, 450000
-        ));
-        orderItems.add(getOrderItemResponse(
-            1836470L, 38759L, "베이브리즈가족호텔",
-            "A", "2024-01-25", "16:00", "2023-01-27",
-            "11:00", 2, 2, 100000
-        ));
-        orderResponse.setOrderItems(orderItems);
-
-        return ResponseBody.ok(orderResponse);
-    }
-
-    private static OrderItemResponse getOrderItemResponse(
-        Long productId, Long roomId, String productName, String roomName,
-        String checkInDate, String checkInTime, String checkOutDate, String checkOutTime,
-        int baseGuestCount, int maxGuestCount, int price
-    ) {
-        OrderItemResponse orderItem = new OrderItemResponse();
-        orderItem.setProductId(productId);
-        orderItem.setRoomId(roomId);
-        orderItem.setProductName(productName);
-        orderItem.setRoomName(roomName);
-        orderItem.setCheckInDate(checkInDate);
-        orderItem.setCheckInTime(checkInTime);
-        orderItem.setCheckOutDate(checkOutDate);
-        orderItem.setCheckOutTime(checkOutTime);
-        orderItem.setBaseGuestCount(baseGuestCount);
-        orderItem.setMaxGuestCount(maxGuestCount);
-        orderItem.setPrice(price);
-        return orderItem;
+        return ResponseBody.ok(reservationRequestResponse);
     }
 
     @GetMapping("/orders/history")
