@@ -458,7 +458,7 @@ public class MockContorller {
             100000,
             "김패캠",
             "010-0000-0000",
-            List.of(item)
+            List.of(item, item)
         );
 
         return ResponseBody.ok(response);
