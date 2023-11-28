@@ -344,7 +344,9 @@ public class MockContorller {
         orderItem.setRoomName("A/3");
         orderItem.setBaseGuestCount(4);
         orderItem.setMaxGuestCount(4);
+        orderItem.setCheckInDate("2024-01-25");
         orderItem.setCheckInTime("15:00");
+        orderItem.setCheckOutDate("2024-01-27");
         orderItem.setCheckOutTime("11:00");
         return orderItem;
     }

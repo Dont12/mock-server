@@ -9,7 +9,9 @@ public class OrderDetailItemResponse {
     private String roomName;
     private int baseGuestCount;
     private int maxGuestCount;
+    private String checkInDate;
     private String checkInTime;
+    private String checkOutDate;
     private String checkOutTime;
 
     public OrderDetailItemResponse() {}
@@ -26,7 +28,21 @@ public class OrderDetailItemResponse {
     public void setCheckInTime(String checkInTime) { this.checkInTime = checkInTime; }
     public void setCheckOutTime(String checkOutTime) { this.checkOutTime = checkOutTime; }
 
-    // Getters...
+    public String getCheckInDate() {
+        return checkInDate;
+    }
+
+    public void setCheckInDate(String checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
+    public String getCheckOutDate() {
+        return checkOutDate;
+    }
+
+    public void setCheckOutDate(String checkOutDate) {
+        this.checkOutDate = checkOutDate;
+    }
 
     public Long getOrderItemId() {
         return orderItemId;
