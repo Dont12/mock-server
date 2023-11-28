@@ -123,12 +123,12 @@ public class MockContorller {
         cart.setPage(pageResponse);
 
         List<CartItemResponse> items = new ArrayList<>();
-        items.add(getCartItemResponse(1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27", 4));
-        items.add(getCartItemResponse(2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27", 4));
-        items.add(getCartItemResponse(3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "대청방", 4, 6, 130000, "14:00", "10:00", "2023-12-25", "2023-12-27", 4));
-        items.add(getCartItemResponse(4L, 1972030L, 42638L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "사랑방", 4, 5, 100000, "14:00", "10:00", "2023-12-25", "2023-12-27", 4));
-        items.add(getCartItemResponse(5L, 2804347L, 55641L, "송계헌 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "송계헌", 4, 5, 450000, "16:00", "10:00", "2024-01-25", "2024-01-27", 4));
-        items.add(getCartItemResponse(6L, 1836470L, 38759L, "베이브리즈가족호텔", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "A", 2, 2, 100000, "15:00", "11:00", "2024-01-25", "2024-01-27", 2));
+        items.add(getCartItemResponse(1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27", 4, 0));
+        items.add(getCartItemResponse(2L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg", "충청남도 태안군 몽대로 448", "A/3", 4, 4, 170000, "15:00", "11:00", "2023-11-25", "2023-11-27", 4, 5));
+        items.add(getCartItemResponse(3L, 1972030L, 42637L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "대청방", 4, 6, 130000, "14:00", "10:00", "2023-12-25", "2023-12-27", 4, 2));
+        items.add(getCartItemResponse(4L, 1972030L, 42638L, "상유재 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/22/2629122_image2_1.jpg", "강원특별자치도 정선군 정선읍 봉양3길 22-8", "사랑방", 4, 5, 100000, "14:00", "10:00", "2023-12-25", "2023-12-27", 4, 2));
+        items.add(getCartItemResponse(5L, 2706613L, 55641L, "송계헌 [한국관광 품질인증/Korea Quality]", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "송계헌", 4, 5, 450000, "16:00", "10:00", "2024-01-25", "2024-01-27", 4, 2));
+        items.add(getCartItemResponse(6L, 1836470L, 38759L, "베이브리즈가족호텔", "http://tong.visitkorea.or.kr/cms/resource/42/2706142_image2_1.jpg", "경상북도 안동시 풍천면 병산길 332", "A", 2, 2, 100000, "15:00", "11:00", "2024-01-25", "2024-01-27", 2, 2));
         cart.setItems(items);
 
         return ResponseBody.ok(cart);
@@ -138,7 +138,7 @@ public class MockContorller {
         Long itemId, Long productId, Long roomId, String productName, String imageUrl,
         String address, String roomName, int baseGuestCount, int maxGuestCount,
         int price, String checkInTime, String checkOutTime, String checkInDate, String checkOutDate,
-        int guestCount
+        int guestCount, int stock
     ) {
         CartItemResponse item = new CartItemResponse();
         item.setId(itemId);
@@ -155,7 +155,7 @@ public class MockContorller {
         product.setPrice(price);
         product.setCheckInTime(checkInTime);
         product.setCheckOutTime(checkOutTime);
-        product.setStock(2);
+        product.setStock(stock);
         product.setGuestCount(guestCount);
 
         item.setProduct(product);
