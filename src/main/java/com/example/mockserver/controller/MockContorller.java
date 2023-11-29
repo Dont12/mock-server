@@ -1,5 +1,6 @@
 package com.example.mockserver.controller;
 
+import com.example.mockserver.controller.response.OrderHistoryRealResponse;
 import com.example.mockserver.response.CartItemResponse;
 import com.example.mockserver.response.CartProductResponse;
 import com.example.mockserver.response.CartResponse;
@@ -184,7 +185,7 @@ public class MockContorller {
     }
 
     @GetMapping("/orders/history")
-    public ResponseBody<List<OrderHistoryResponse>> 주문내역조회() {
+    public ResponseBody<OrderHistoryRealResponse> 주문내역조회() {
         List<OrderHistoryItemResponse> orderHistories = new ArrayList<>();
 
         OrderHistoryResponse orderHistory = new OrderHistoryResponse();
@@ -235,7 +236,9 @@ public class MockContorller {
         ));
         orderHistory2.setOrderItems(orderHistories2);
 
-        return ResponseBody.ok(List.of(orderHistory, orderHistory2));
+        return ResponseBody.ok(
+            new OrderHistoryRealResponse(10L, 0L, 1L, (long) orderHistories.size(), orderHistories)
+        );
     }
 
     private static OrderHistoryItemResponse getOrderHistoryItemResponse(
