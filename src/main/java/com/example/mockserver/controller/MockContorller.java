@@ -1,5 +1,6 @@
 package com.example.mockserver.controller;
 
+import com.example.mockserver.controller.response.OrderHistoryRealResponse;
 import com.example.mockserver.response.CartItemResponse;
 import com.example.mockserver.response.CartProductResponse;
 import com.example.mockserver.response.CartResponse;
@@ -189,12 +190,12 @@ public class MockContorller {
     }
 
     @GetMapping("/orders/history")
-    public ResponseBody<List<OrderHistoryResponse>> 주문내역조회() {
+    public ResponseBody<OrderHistoryRealResponse> 주문내역조회() {
         List<OrderHistoryItemResponse> orderHistories = new ArrayList<>();
 
         OrderHistoryResponse orderHistory = new OrderHistoryResponse();
         orderHistory.setOrderId(1L);
-        orderHistory.setCreatedDate("2010-01-01");
+        orderHistory.setReserveDate("2010-01-01");
 
         orderHistories.add(getOrderHistoryItemResponse(
             1L, 2804347L, 55641L, "스테이 앤드 스튜디오 여여재[한국관광 품질인증/Korea Quality]",
@@ -230,7 +231,7 @@ public class MockContorller {
 
         OrderHistoryResponse orderHistory2 = new OrderHistoryResponse();
         orderHistory2.setOrderId(2L);
-        orderHistory2.setCreatedDate("2010-01-02");
+        orderHistory2.setReserveDate("2010-01-02");
 
         List<OrderHistoryItemResponse> orderHistories2 = new ArrayList<>();
         orderHistories2.add(getOrderHistoryItemResponse(
@@ -240,7 +241,9 @@ public class MockContorller {
         ));
         orderHistory2.setOrderItems(orderHistories2);
 
-        return ResponseBody.ok(List.of(orderHistory, orderHistory2));
+        return ResponseBody.ok(
+            new OrderHistoryRealResponse(10L, 0L, 1L, (long) orderHistories.size(), orderHistories)
+        );
     }
 
     private static OrderHistoryItemResponse getOrderHistoryItemResponse(
@@ -251,16 +254,15 @@ public class MockContorller {
         OrderHistoryItemResponse orderItem = new OrderHistoryItemResponse();
         orderItem.setOrderItemId(orderItemId);
         orderItem.setProductId(productId);
-        orderItem.setRoomId(roomId);
         orderItem.setProductName(productName);
         orderItem.setRoomName(roomName);
+        orderItem.setImageUrl(imageUrl);
+        orderItem.setBaseGuestCount(baseGuestCount);
+        orderItem.setMaxGuestCount(maxGuestCount);
         orderItem.setCheckInDate(checkInDate);
         orderItem.setCheckInTime(checkInTime);
         orderItem.setCheckOutDate(checkOutDate);
         orderItem.setCheckOutTime(checkOutTime);
-        orderItem.setBaseGuestCount(baseGuestCount);
-        orderItem.setMaxGuestCount(maxGuestCount);
-        orderItem.setImageUrl(imageUrl);
         return orderItem;
     }
 
