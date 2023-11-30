@@ -11,56 +11,82 @@ public class ProductDetailResponse {
     private String description;
     private double longitude;
     private double latitude;
-    private String imageUrl;
+    private List<String> imageUrls;
     private List<RoomResponse> rooms;
 
     public ProductDetailResponse() {
         this.rooms = new ArrayList<>();
     }
 
-    public void setId(Long id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setZipCode(String zipCode) { this.zipCode = zipCode; }
-    public void setAddress(String address) { this.address = address; }
-    public void setDescription(String description) { this.description = description; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
-    public void setRooms(List<RoomResponse> rooms) { this.rooms = rooms; }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getZipCode() {
         return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getLongitude() {
-        return String.valueOf(longitude);
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getLatitude() {
-        return String.valueOf(latitude);
+    public double getLongitude() {
+        return longitude;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     public List<RoomResponse> getRooms() {
         return rooms;
+    }
+
+    public void setRooms(List<RoomResponse> rooms) {
+        this.rooms = rooms;
     }
 }

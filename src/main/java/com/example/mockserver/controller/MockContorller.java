@@ -72,7 +72,12 @@ public class MockContorller {
         productDetail.setDescription("설명");
         productDetail.setLongitude(126.2741703813);
         productDetail.setLatitude(36.6766143894);
-        productDetail.setImageUrl("http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg");
+        productDetail.setImageUrls(
+            List.of(
+                "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image2_1.jpg",
+                "http://tong.visitkorea.or.kr/cms/resource/41/2803441_image3_1.jpg"
+            )
+        );
 
         List<RoomResponse> rooms = new ArrayList<>();
         rooms.add(getRoomResponse(55641L, "A/3", 4, 4, 170000, "http://tong.visitkorea.or.kr/cms/resource/02/2803402_image2_1.jpg", "15:00", "11:00", "2010-01-01"));
